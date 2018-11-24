@@ -14,8 +14,6 @@ public class DatabaseConnection {
 
 	public static DatabaseConnection getDatabaseConnection() {
 		if (database == null) {
-			 /* database = new DatabaseConnection("jdbc:sqlserver://datalog.c5c3y0yktdpb.us-east-2.rds.amazonaws.com:1433;"
-						+"databaseName=compis;integratedSecurity=false;"); */
 					database = new DatabaseConnection("jdbc:mysql://localhost:3306/compis?autoReconnect=true&useSSL=false");
 		 }
 		return database;

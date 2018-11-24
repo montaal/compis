@@ -16,10 +16,10 @@ public class DatalogLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, MULTIPLICATION=2, DIVISION=3, ADD=4, MINUS=5, GREATER_THAN=6, 
-		GREATER_THAN_OR_EQUAL=7, LESSER_THAN=8, LESSER_THAN_OR_EQUAL=9, EQUAL=10, 
-		NOT_EQUAL=11, LEFT_PARENTHESIS=12, RIGHT_PARENTHESIS=13, COMMA=14, DOT=15, 
-		TILDE=16, QUESTION_MARK=17, COLON_DASH=18, DOUBLE_QUOTE=19, ID=20, VAR=21, 
+		T__0=1, MULTIPLICATION=2, DIVISION=3, ADD=4, MINUS=5, GREATER_THAN=6,
+		GREATER_THAN_OR_EQUAL=7, LESSER_THAN=8, LESSER_THAN_OR_EQUAL=9, EQUAL=10,
+		NOT_EQUAL=11, LEFT_PARENTHESIS=12, RIGHT_PARENTHESIS=13, COMMA=14, DOT=15,
+		TILDE=16, QUESTION_MARK=17, COLON_DASH=18, DOUBLE_QUOTE=19, ID=20, VAR=21,
 		STRING=22, LINE_COMMENT=23, COMMMENT=24, WS=25;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -30,22 +30,22 @@ public class DatalogLexer extends Lexer {
 	};
 
 	public static final String[] ruleNames = {
-		"T__0", "MULTIPLICATION", "DIVISION", "ADD", "MINUS", "GREATER_THAN", 
-		"GREATER_THAN_OR_EQUAL", "LESSER_THAN", "LESSER_THAN_OR_EQUAL", "EQUAL", 
-		"NOT_EQUAL", "LEFT_PARENTHESIS", "RIGHT_PARENTHESIS", "COMMA", "DOT", 
-		"TILDE", "QUESTION_MARK", "COLON_DASH", "DOUBLE_QUOTE", "ID", "VAR", "STRING", 
+		"T__0", "MULTIPLICATION", "DIVISION", "ADD", "MINUS", "GREATER_THAN",
+		"GREATER_THAN_OR_EQUAL", "LESSER_THAN", "LESSER_THAN_OR_EQUAL", "EQUAL",
+		"NOT_EQUAL", "LEFT_PARENTHESIS", "RIGHT_PARENTHESIS", "COMMA", "DOT",
+		"TILDE", "QUESTION_MARK", "COLON_DASH", "DOUBLE_QUOTE", "ID", "VAR", "STRING",
 		"LINE_COMMENT", "COMMMENT", "WS", "ESC_SEQ"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'Table:'", "'*'", "'/'", "'+'", "'-'", "'>'", "'>='", "'<'", "'<='", 
+		null, "'Table:'", "'*'", "'/'", "'+'", "'-'", "'>'", "'>='", "'<'", "'<='",
 		"'='", "'!='", "'('", "')'", "','", "'.'", "'~'", "'?'", "':-'", "'\"'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "MULTIPLICATION", "DIVISION", "ADD", "MINUS", "GREATER_THAN", 
-		"GREATER_THAN_OR_EQUAL", "LESSER_THAN", "LESSER_THAN_OR_EQUAL", "EQUAL", 
-		"NOT_EQUAL", "LEFT_PARENTHESIS", "RIGHT_PARENTHESIS", "COMMA", "DOT", 
-		"TILDE", "QUESTION_MARK", "COLON_DASH", "DOUBLE_QUOTE", "ID", "VAR", "STRING", 
+		null, null, "MULTIPLICATION", "DIVISION", "ADD", "MINUS", "GREATER_THAN",
+		"GREATER_THAN_OR_EQUAL", "LESSER_THAN", "LESSER_THAN_OR_EQUAL", "EQUAL",
+		"NOT_EQUAL", "LEFT_PARENTHESIS", "RIGHT_PARENTHESIS", "COMMA", "DOT",
+		"TILDE", "QUESTION_MARK", "COLON_DASH", "DOUBLE_QUOTE", "ID", "VAR", "STRING",
 		"LINE_COMMENT", "COMMMENT", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);

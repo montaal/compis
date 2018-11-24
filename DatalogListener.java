@@ -17,42 +17,6 @@ public interface DatalogListener extends ParseTreeListener {
 	 */
 	void exitProg(DatalogParser.ProgContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code tabledec}
-	 * labeled alternative in {@link DatalogParser#datalogProgram}.
-	 * @param ctx the parse tree
-	 */
-	void enterTabledec(DatalogParser.TabledecContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code tabledec}
-	 * labeled alternative in {@link DatalogParser#datalogProgram}.
-	 * @param ctx the parse tree
-	 */
-	void exitTabledec(DatalogParser.TabledecContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code factdec}
-	 * labeled alternative in {@link DatalogParser#datalogProgram}.
-	 * @param ctx the parse tree
-	 */
-	void enterFactdec(DatalogParser.FactdecContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code factdec}
-	 * labeled alternative in {@link DatalogParser#datalogProgram}.
-	 * @param ctx the parse tree
-	 */
-	void exitFactdec(DatalogParser.FactdecContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code actiondec}
-	 * labeled alternative in {@link DatalogParser#datalogProgram}.
-	 * @param ctx the parse tree
-	 */
-	void enterActiondec(DatalogParser.ActiondecContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code actiondec}
-	 * labeled alternative in {@link DatalogParser#datalogProgram}.
-	 * @param ctx the parse tree
-	 */
-	void exitActiondec(DatalogParser.ActiondecContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code querydec}
 	 * labeled alternative in {@link DatalogParser#datalogProgram}.
 	 * @param ctx the parse tree
@@ -94,26 +58,6 @@ public interface DatalogListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIdList(DatalogParser.IdListContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link DatalogParser#fact}.
-	 * @param ctx the parse tree
-	 */
-	void enterFact(DatalogParser.FactContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link DatalogParser#fact}.
-	 * @param ctx the parse tree
-	 */
-	void exitFact(DatalogParser.FactContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link DatalogParser#action}.
-	 * @param ctx the parse tree
-	 */
-	void enterAction(DatalogParser.ActionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link DatalogParser#action}.
-	 * @param ctx the parse tree
-	 */
-	void exitAction(DatalogParser.ActionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DatalogParser#headPredicate}.
 	 * @param ctx the parse tree

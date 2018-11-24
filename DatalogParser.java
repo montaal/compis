@@ -23,15 +23,15 @@ public class DatalogParser extends Parser {
 		STRING=22, LINE_COMMENT=23, COMMMENT=24, WS=25;
 	public static final int
 		RULE_prog = 0, RULE_datalogProgram = 1, RULE_query = 2, RULE_table = 3, 
-		RULE_idList = 4, RULE_fact = 5, RULE_action = 6, RULE_headPredicate = 7, 
-		RULE_predicate = 8, RULE_predicateList = 9, RULE_parameter = 10, RULE_parameterList = 11, 
-		RULE_stringIdList = 12, RULE_varList = 13, RULE_predParam = 14, RULE_tableParam = 15, 
-		RULE_factParam = 16, RULE_headParam = 17, RULE_expression = 18, RULE_operator = 19;
+		RULE_idList = 4, RULE_headPredicate = 5, RULE_predicate = 6, RULE_predicateList = 7, 
+		RULE_parameter = 8, RULE_parameterList = 9, RULE_stringIdList = 10, RULE_varList = 11, 
+		RULE_predParam = 12, RULE_tableParam = 13, RULE_factParam = 14, RULE_headParam = 15, 
+		RULE_expression = 16, RULE_operator = 17;
 	public static final String[] ruleNames = {
-		"prog", "datalogProgram", "query", "table", "idList", "fact", "action", 
-		"headPredicate", "predicate", "predicateList", "parameter", "parameterList", 
-		"stringIdList", "varList", "predParam", "tableParam", "factParam", "headParam", 
-		"expression", "operator"
+		"prog", "datalogProgram", "query", "table", "idList", "headPredicate", 
+		"predicate", "predicateList", "parameter", "parameterList", "stringIdList", 
+		"varList", "predParam", "tableParam", "factParam", "headParam", "expression", 
+		"operator"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -106,12 +106,9 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_prog; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterProg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitProg(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitProg(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -122,20 +119,20 @@ public class DatalogParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(41); 
+			setState(37); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(40);
+				setState(36);
 				datalogProgram();
 				}
 				}
-				setState(43); 
+				setState(39); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==T__0 || _la==ID );
+			} while ( _la==T__0 );
 			}
 		}
 		catch (RecognitionException re) {
@@ -160,60 +157,15 @@ public class DatalogParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class TabledecContext extends DatalogProgramContext {
-		public TableContext table() {
-			return getRuleContext(TableContext.class,0);
-		}
-		public TabledecContext(DatalogProgramContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterTabledec(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitTabledec(this);
-		}
-	}
 	public static class QuerydecContext extends DatalogProgramContext {
 		public QueryContext query() {
 			return getRuleContext(QueryContext.class,0);
 		}
 		public QuerydecContext(DatalogProgramContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterQuerydec(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitQuerydec(this);
-		}
-	}
-	public static class FactdecContext extends DatalogProgramContext {
-		public FactContext fact() {
-			return getRuleContext(FactContext.class,0);
-		}
-		public FactdecContext(DatalogProgramContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterFactdec(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitFactdec(this);
-		}
-	}
-	public static class ActiondecContext extends DatalogProgramContext {
-		public ActionContext action() {
-			return getRuleContext(ActionContext.class,0);
-		}
-		public ActiondecContext(DatalogProgramContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterActiondec(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitActiondec(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitQuerydec(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -221,43 +173,13 @@ public class DatalogParser extends Parser {
 		DatalogProgramContext _localctx = new DatalogProgramContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_datalogProgram);
 		try {
-			setState(50);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
-			case 1:
-				_localctx = new TabledecContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(45);
-				match(T__0);
-				setState(46);
-				table();
-				}
-				break;
-			case 2:
-				_localctx = new FactdecContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(47);
-				fact();
-				}
-				break;
-			case 3:
-				_localctx = new ActiondecContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(48);
-				action();
-				}
-				break;
-			case 4:
-				_localctx = new QuerydecContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(49);
-				query();
-				}
-				break;
+			_localctx = new QuerydecContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(41);
+			match(T__0);
+			setState(42);
+			query();
 			}
 		}
 		catch (RecognitionException re) {
@@ -284,12 +206,9 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_query; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterQuery(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitQuery(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitQuery(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -299,15 +218,15 @@ public class DatalogParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52);
+			setState(44);
 			match(ID);
-			setState(53);
+			setState(45);
 			match(LEFT_PARENTHESIS);
-			setState(54);
+			setState(46);
 			predParam();
-			setState(55);
+			setState(47);
 			match(RIGHT_PARENTHESIS);
-			setState(56);
+			setState(48);
 			match(QUESTION_MARK);
 			}
 		}
@@ -334,12 +253,9 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_table; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterTable(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitTable(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitTable(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -349,13 +265,13 @@ public class DatalogParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(50);
 			match(ID);
-			setState(59);
+			setState(51);
 			match(LEFT_PARENTHESIS);
-			setState(60);
+			setState(52);
 			tableParam();
-			setState(61);
+			setState(53);
 			match(RIGHT_PARENTHESIS);
 			}
 		}
@@ -381,12 +297,9 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_idList; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterIdList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitIdList(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitIdList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -394,17 +307,17 @@ public class DatalogParser extends Parser {
 		IdListContext _localctx = new IdListContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_idList);
 		try {
-			setState(67);
+			setState(59);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case COMMA:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(63);
+				setState(55);
 				match(COMMA);
-				setState(64);
+				setState(56);
 				match(ID);
-				setState(65);
+				setState(57);
 				idList();
 				}
 				break;
@@ -415,112 +328,6 @@ public class DatalogParser extends Parser {
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class FactContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(DatalogParser.ID, 0); }
-		public TerminalNode LEFT_PARENTHESIS() { return getToken(DatalogParser.LEFT_PARENTHESIS, 0); }
-		public FactParamContext factParam() {
-			return getRuleContext(FactParamContext.class,0);
-		}
-		public TerminalNode RIGHT_PARENTHESIS() { return getToken(DatalogParser.RIGHT_PARENTHESIS, 0); }
-		public TerminalNode DOT() { return getToken(DatalogParser.DOT, 0); }
-		public FactContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_fact; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterFact(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitFact(this);
-		}
-	}
-
-	public final FactContext fact() throws RecognitionException {
-		FactContext _localctx = new FactContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_fact);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(69);
-			match(ID);
-			setState(70);
-			match(LEFT_PARENTHESIS);
-			setState(71);
-			factParam();
-			setState(72);
-			match(RIGHT_PARENTHESIS);
-			setState(73);
-			match(DOT);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class ActionContext extends ParserRuleContext {
-		public HeadPredicateContext headPredicate() {
-			return getRuleContext(HeadPredicateContext.class,0);
-		}
-		public TerminalNode COLON_DASH() { return getToken(DatalogParser.COLON_DASH, 0); }
-		public PredicateContext predicate() {
-			return getRuleContext(PredicateContext.class,0);
-		}
-		public PredicateListContext predicateList() {
-			return getRuleContext(PredicateListContext.class,0);
-		}
-		public TerminalNode DOT() { return getToken(DatalogParser.DOT, 0); }
-		public ActionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_action; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterAction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitAction(this);
-		}
-	}
-
-	public final ActionContext action() throws RecognitionException {
-		ActionContext _localctx = new ActionContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_action);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(75);
-			headPredicate();
-			setState(76);
-			match(COLON_DASH);
-			setState(77);
-			predicate();
-			setState(78);
-			predicateList();
-			setState(79);
-			match(DOT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -546,28 +353,25 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_headPredicate; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterHeadPredicate(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitHeadPredicate(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitHeadPredicate(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HeadPredicateContext headPredicate() throws RecognitionException {
 		HeadPredicateContext _localctx = new HeadPredicateContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_headPredicate);
+		enterRule(_localctx, 10, RULE_headPredicate);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(81);
+			setState(61);
 			match(ID);
-			setState(82);
+			setState(62);
 			match(LEFT_PARENTHESIS);
-			setState(83);
+			setState(63);
 			headParam();
-			setState(84);
+			setState(64);
 			match(RIGHT_PARENTHESIS);
 			}
 		}
@@ -594,28 +398,25 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_predicate; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterPredicate(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitPredicate(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitPredicate(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PredicateContext predicate() throws RecognitionException {
 		PredicateContext _localctx = new PredicateContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_predicate);
+		enterRule(_localctx, 12, RULE_predicate);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86);
+			setState(66);
 			match(ID);
-			setState(87);
+			setState(67);
 			match(LEFT_PARENTHESIS);
-			setState(88);
+			setState(68);
 			predParam();
-			setState(89);
+			setState(69);
 			match(RIGHT_PARENTHESIS);
 			}
 		}
@@ -643,40 +444,35 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_predicateList; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterPredicateList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitPredicateList(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitPredicateList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PredicateListContext predicateList() throws RecognitionException {
 		PredicateListContext _localctx = new PredicateListContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_predicateList);
+		enterRule(_localctx, 14, RULE_predicateList);
 		try {
-			setState(96);
+			setState(76);
 			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case COMMA:
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(91);
+				setState(71);
 				match(COMMA);
-				setState(92);
+				setState(72);
 				predicate();
-				setState(93);
+				setState(73);
 				predicateList();
 				}
 				break;
-			case DOT:
+			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -702,47 +498,44 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameter; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterParameter(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitParameter(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitParameter(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ParameterContext parameter() throws RecognitionException {
 		ParameterContext _localctx = new ParameterContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_parameter);
+		enterRule(_localctx, 16, RULE_parameter);
 		try {
-			setState(102);
+			setState(82);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case STRING:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(98);
+				setState(78);
 				match(STRING);
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(99);
+				setState(79);
 				match(ID);
 				}
 				break;
 			case VAR:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(100);
+				setState(80);
 				match(VAR);
 				}
 				break;
 			case LEFT_PARENTHESIS:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(101);
+				setState(81);
 				expression();
 				}
 				break;
@@ -774,30 +567,27 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameterList; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterParameterList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitParameterList(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitParameterList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ParameterListContext parameterList() throws RecognitionException {
 		ParameterListContext _localctx = new ParameterListContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_parameterList);
+		enterRule(_localctx, 18, RULE_parameterList);
 		try {
-			setState(109);
+			setState(89);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case COMMA:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(104);
+				setState(84);
 				match(COMMA);
-				setState(105);
+				setState(85);
 				parameter();
-				setState(106);
+				setState(86);
 				parameterList();
 				}
 				break;
@@ -833,29 +623,26 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_stringIdList; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterStringIdList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitStringIdList(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitStringIdList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final StringIdListContext stringIdList() throws RecognitionException {
 		StringIdListContext _localctx = new StringIdListContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_stringIdList);
+		enterRule(_localctx, 20, RULE_stringIdList);
 		int _la;
 		try {
-			setState(115);
+			setState(95);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case COMMA:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(111);
+				setState(91);
 				match(COMMA);
-				setState(112);
+				setState(92);
 				_la = _input.LA(1);
 				if ( !(_la==ID || _la==STRING) ) {
 				_errHandler.recoverInline(this);
@@ -865,11 +652,11 @@ public class DatalogParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(113);
+				setState(93);
 				stringIdList();
 				}
 				break;
-			case RIGHT_PARENTHESIS:
+			case EOF:
 				enterOuterAlt(_localctx, 2);
 				{
 				}
@@ -897,28 +684,25 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_varList; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterVarList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitVarList(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitVarList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VarListContext varList() throws RecognitionException {
 		VarListContext _localctx = new VarListContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_varList);
+		enterRule(_localctx, 22, RULE_varList);
 		try {
-			setState(120);
+			setState(100);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case COMMA:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(117);
+				setState(97);
 				match(COMMA);
-				setState(118);
+				setState(98);
 				match(VAR);
 				}
 				break;
@@ -954,24 +738,21 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_predParam; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterPredParam(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitPredParam(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitPredParam(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PredParamContext predParam() throws RecognitionException {
 		PredParamContext _localctx = new PredParamContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_predParam);
+		enterRule(_localctx, 24, RULE_predParam);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(122);
+			setState(102);
 			parameter();
-			setState(123);
+			setState(103);
 			parameterList();
 			}
 		}
@@ -996,24 +777,21 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_tableParam; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterTableParam(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitTableParam(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitTableParam(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final TableParamContext tableParam() throws RecognitionException {
 		TableParamContext _localctx = new TableParamContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_tableParam);
+		enterRule(_localctx, 26, RULE_tableParam);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(125);
+			setState(105);
 			match(ID);
-			setState(126);
+			setState(106);
 			idList();
 			}
 		}
@@ -1039,23 +817,20 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_factParam; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterFactParam(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitFactParam(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitFactParam(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FactParamContext factParam() throws RecognitionException {
 		FactParamContext _localctx = new FactParamContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_factParam);
+		enterRule(_localctx, 28, RULE_factParam);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(128);
+			setState(108);
 			_la = _input.LA(1);
 			if ( !(_la==ID || _la==STRING) ) {
 			_errHandler.recoverInline(this);
@@ -1065,7 +840,7 @@ public class DatalogParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(129);
+			setState(109);
 			stringIdList();
 			}
 		}
@@ -1090,24 +865,21 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_headParam; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterHeadParam(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitHeadParam(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitHeadParam(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HeadParamContext headParam() throws RecognitionException {
 		HeadParamContext _localctx = new HeadParamContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_headParam);
+		enterRule(_localctx, 30, RULE_headParam);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
+			setState(111);
 			match(VAR);
-			setState(132);
+			setState(112);
 			varList();
 			}
 		}
@@ -1139,30 +911,27 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitExpression(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitExpression(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
 		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_expression);
+		enterRule(_localctx, 32, RULE_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
+			setState(114);
 			match(LEFT_PARENTHESIS);
-			setState(135);
+			setState(115);
 			parameter();
-			setState(136);
+			setState(116);
 			operator();
-			setState(137);
+			setState(117);
 			parameter();
-			setState(138);
+			setState(118);
 			match(RIGHT_PARENTHESIS);
 			}
 		}
@@ -1193,23 +962,20 @@ public class DatalogParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_operator; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).enterOperator(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DatalogListener ) ((DatalogListener)listener).exitOperator(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof DatalogVisitor ) return ((DatalogVisitor<? extends T>)visitor).visitOperator(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final OperatorContext operator() throws RecognitionException {
 		OperatorContext _localctx = new OperatorContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_operator);
+		enterRule(_localctx, 34, RULE_operator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(140);
+			setState(120);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MULTIPLICATION) | (1L << DIVISION) | (1L << ADD) | (1L << MINUS) | (1L << GREATER_THAN) | (1L << GREATER_THAN_OR_EQUAL) | (1L << LESSER_THAN) | (1L << LESSER_THAN_OR_EQUAL) | (1L << EQUAL) | (1L << NOT_EQUAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1233,42 +999,35 @@ public class DatalogParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33\u0091\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\3\2\6\2,\n\2\r\2\16\2-\3\3\3\3\3\3\3\3"+
-		"\3\3\5\3\65\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3"+
-		"\6\3\6\5\6F\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3"+
-		"\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\5\13c\n\13"+
-		"\3\f\3\f\3\f\3\f\5\fi\n\f\3\r\3\r\3\r\3\r\3\r\5\rp\n\r\3\16\3\16\3\16"+
-		"\3\16\5\16v\n\16\3\17\3\17\3\17\5\17{\n\17\3\20\3\20\3\20\3\21\3\21\3"+
-		"\21\3\22\3\22\3\22\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\3\24\3\25\3"+
-		"\25\3\25\2\2\26\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(\2\4\4\2\26"+
-		"\26\30\30\3\2\4\r\2\u0088\2+\3\2\2\2\4\64\3\2\2\2\6\66\3\2\2\2\b<\3\2"+
-		"\2\2\nE\3\2\2\2\fG\3\2\2\2\16M\3\2\2\2\20S\3\2\2\2\22X\3\2\2\2\24b\3\2"+
-		"\2\2\26h\3\2\2\2\30o\3\2\2\2\32u\3\2\2\2\34z\3\2\2\2\36|\3\2\2\2 \177"+
-		"\3\2\2\2\"\u0082\3\2\2\2$\u0085\3\2\2\2&\u0088\3\2\2\2(\u008e\3\2\2\2"+
-		"*,\5\4\3\2+*\3\2\2\2,-\3\2\2\2-+\3\2\2\2-.\3\2\2\2.\3\3\2\2\2/\60\7\3"+
-		"\2\2\60\65\5\b\5\2\61\65\5\f\7\2\62\65\5\16\b\2\63\65\5\6\4\2\64/\3\2"+
-		"\2\2\64\61\3\2\2\2\64\62\3\2\2\2\64\63\3\2\2\2\65\5\3\2\2\2\66\67\7\26"+
-		"\2\2\678\7\16\2\289\5\36\20\29:\7\17\2\2:;\7\23\2\2;\7\3\2\2\2<=\7\26"+
-		"\2\2=>\7\16\2\2>?\5 \21\2?@\7\17\2\2@\t\3\2\2\2AB\7\20\2\2BC\7\26\2\2"+
-		"CF\5\n\6\2DF\3\2\2\2EA\3\2\2\2ED\3\2\2\2F\13\3\2\2\2GH\7\26\2\2HI\7\16"+
-		"\2\2IJ\5\"\22\2JK\7\17\2\2KL\7\21\2\2L\r\3\2\2\2MN\5\20\t\2NO\7\24\2\2"+
-		"OP\5\22\n\2PQ\5\24\13\2QR\7\21\2\2R\17\3\2\2\2ST\7\26\2\2TU\7\16\2\2U"+
-		"V\5$\23\2VW\7\17\2\2W\21\3\2\2\2XY\7\26\2\2YZ\7\16\2\2Z[\5\36\20\2[\\"+
-		"\7\17\2\2\\\23\3\2\2\2]^\7\20\2\2^_\5\22\n\2_`\5\24\13\2`c\3\2\2\2ac\3"+
-		"\2\2\2b]\3\2\2\2ba\3\2\2\2c\25\3\2\2\2di\7\30\2\2ei\7\26\2\2fi\7\27\2"+
-		"\2gi\5&\24\2hd\3\2\2\2he\3\2\2\2hf\3\2\2\2hg\3\2\2\2i\27\3\2\2\2jk\7\20"+
-		"\2\2kl\5\26\f\2lm\5\30\r\2mp\3\2\2\2np\3\2\2\2oj\3\2\2\2on\3\2\2\2p\31"+
-		"\3\2\2\2qr\7\20\2\2rs\t\2\2\2sv\5\32\16\2tv\3\2\2\2uq\3\2\2\2ut\3\2\2"+
-		"\2v\33\3\2\2\2wx\7\20\2\2x{\7\27\2\2y{\3\2\2\2zw\3\2\2\2zy\3\2\2\2{\35"+
-		"\3\2\2\2|}\5\26\f\2}~\5\30\r\2~\37\3\2\2\2\177\u0080\7\26\2\2\u0080\u0081"+
-		"\5\n\6\2\u0081!\3\2\2\2\u0082\u0083\t\2\2\2\u0083\u0084\5\32\16\2\u0084"+
-		"#\3\2\2\2\u0085\u0086\7\27\2\2\u0086\u0087\5\34\17\2\u0087%\3\2\2\2\u0088"+
-		"\u0089\7\16\2\2\u0089\u008a\5\26\f\2\u008a\u008b\5(\25\2\u008b\u008c\5"+
-		"\26\f\2\u008c\u008d\7\17\2\2\u008d\'\3\2\2\2\u008e\u008f\t\3\2\2\u008f"+
-		")\3\2\2\2\n-\64Ebhouz";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33}\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
+		"\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23"+
+		"\t\23\3\2\6\2(\n\2\r\2\16\2)\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\5\3"+
+		"\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6>\n\6\3\7\3\7\3\7\3\7\3\7\3\b\3\b\3"+
+		"\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\5\tO\n\t\3\n\3\n\3\n\3\n\5\nU\n\n\3\13"+
+		"\3\13\3\13\3\13\3\13\5\13\\\n\13\3\f\3\f\3\f\3\f\5\fb\n\f\3\r\3\r\3\r"+
+		"\5\rg\n\r\3\16\3\16\3\16\3\17\3\17\3\17\3\20\3\20\3\20\3\21\3\21\3\21"+
+		"\3\22\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23\2\2\24\2\4\6\b\n\f\16\20"+
+		"\22\24\26\30\32\34\36 \"$\2\4\4\2\26\26\30\30\3\2\4\r\2s\2\'\3\2\2\2\4"+
+		"+\3\2\2\2\6.\3\2\2\2\b\64\3\2\2\2\n=\3\2\2\2\f?\3\2\2\2\16D\3\2\2\2\20"+
+		"N\3\2\2\2\22T\3\2\2\2\24[\3\2\2\2\26a\3\2\2\2\30f\3\2\2\2\32h\3\2\2\2"+
+		"\34k\3\2\2\2\36n\3\2\2\2 q\3\2\2\2\"t\3\2\2\2$z\3\2\2\2&(\5\4\3\2\'&\3"+
+		"\2\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*\3\3\2\2\2+,\7\3\2\2,-\5\6\4\2-"+
+		"\5\3\2\2\2./\7\26\2\2/\60\7\16\2\2\60\61\5\32\16\2\61\62\7\17\2\2\62\63"+
+		"\7\23\2\2\63\7\3\2\2\2\64\65\7\26\2\2\65\66\7\16\2\2\66\67\5\34\17\2\67"+
+		"8\7\17\2\28\t\3\2\2\29:\7\20\2\2:;\7\26\2\2;>\5\n\6\2<>\3\2\2\2=9\3\2"+
+		"\2\2=<\3\2\2\2>\13\3\2\2\2?@\7\26\2\2@A\7\16\2\2AB\5 \21\2BC\7\17\2\2"+
+		"C\r\3\2\2\2DE\7\26\2\2EF\7\16\2\2FG\5\32\16\2GH\7\17\2\2H\17\3\2\2\2I"+
+		"J\7\20\2\2JK\5\16\b\2KL\5\20\t\2LO\3\2\2\2MO\3\2\2\2NI\3\2\2\2NM\3\2\2"+
+		"\2O\21\3\2\2\2PU\7\30\2\2QU\7\26\2\2RU\7\27\2\2SU\5\"\22\2TP\3\2\2\2T"+
+		"Q\3\2\2\2TR\3\2\2\2TS\3\2\2\2U\23\3\2\2\2VW\7\20\2\2WX\5\22\n\2XY\5\24"+
+		"\13\2Y\\\3\2\2\2Z\\\3\2\2\2[V\3\2\2\2[Z\3\2\2\2\\\25\3\2\2\2]^\7\20\2"+
+		"\2^_\t\2\2\2_b\5\26\f\2`b\3\2\2\2a]\3\2\2\2a`\3\2\2\2b\27\3\2\2\2cd\7"+
+		"\20\2\2dg\7\27\2\2eg\3\2\2\2fc\3\2\2\2fe\3\2\2\2g\31\3\2\2\2hi\5\22\n"+
+		"\2ij\5\24\13\2j\33\3\2\2\2kl\7\26\2\2lm\5\n\6\2m\35\3\2\2\2no\t\2\2\2"+
+		"op\5\26\f\2p\37\3\2\2\2qr\7\27\2\2rs\5\30\r\2s!\3\2\2\2tu\7\16\2\2uv\5"+
+		"\22\n\2vw\5$\23\2wx\5\22\n\2xy\7\17\2\2y#\3\2\2\2z{\t\3\2\2{%\3\2\2\2"+
+		"\t)=NT[af";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
